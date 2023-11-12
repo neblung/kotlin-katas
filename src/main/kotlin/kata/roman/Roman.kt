@@ -4,9 +4,13 @@ package kata.roman
  * Converts the given [nr] to its [roman representation](https://en.wikipedia.org/wiki/Roman_numerals)
  */
 fun roman(nr: Int): String {
-    val chars: List<Char> =
-        if (nr < 10) convertOne.toRoman(nr)
-        else convertTen.toRoman(nr / 10)
+    val factor = nr / 10
+    val rest = nr % 10
+
+    val rX = convertTen.toRoman(factor)
+    val rI = convertOne.toRoman(rest)
+    val chars = rX + rI
+
     return String(chars.toCharArray())
 }
 
@@ -19,6 +23,7 @@ private class DigitConverter(
     val i: Char,
 ) {
     fun toRoman(digit: Int) = when (digit) {
+        0 -> emptyList()
         1 -> listOf(i)
         2 -> listOf(i, i)
         3 -> listOf(i, i, i)
