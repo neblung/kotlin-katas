@@ -5,11 +5,8 @@ package kata.roman
  */
 fun roman(nr: Int): String {
     val initial = Number(nr, listOf())
-    val solved = initial.convertWith(convertHundred)
-        .convertWith(convertTen)
-        .convertWith(convertOne)
-    val chars = solved.chars
-    return String(chars.toCharArray())
+    val solved = digitConverters.fold(initial, Number::convertWith)
+    return String(solved.chars.toCharArray())
 }
 
 private class Number(
@@ -26,6 +23,7 @@ private class Number(
 private val convertOne = DigitConverter('X', 'V', 'I', 1)
 private val convertTen = DigitConverter('C', 'L', 'X', 10)
 private val convertHundred = DigitConverter('M', 'D', 'C', 100)
+private val digitConverters = listOf(convertHundred, convertTen, convertOne)
 
 private class DigitConverter(
     val x: Char,
