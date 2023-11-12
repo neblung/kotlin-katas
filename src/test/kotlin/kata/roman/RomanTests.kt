@@ -51,4 +51,10 @@ class RomanTests {
         roman(101) shouldBe "CI"
         roman(120) shouldBe "CXX"
     }
+
+    @Test
+    fun `greater than thousand`() {
+        roman(2000) shouldBe "MM"
+        roman(1968) shouldBe "MCMLXVIII"
+    }
 }
