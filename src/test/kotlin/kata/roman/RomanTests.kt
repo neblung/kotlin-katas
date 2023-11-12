@@ -35,4 +35,11 @@ class RomanTests {
         roman(11) shouldBe "XI"
         roman(49) shouldBe "XLIX"
     }
+
+    @Test
+    fun `multiples of hundred`() {
+        roman(100) shouldBe "C"
+        roman(500) shouldBe "D"
+        roman(900) shouldBe "CM"
+    }
 }
