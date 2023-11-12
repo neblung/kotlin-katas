@@ -16,4 +16,17 @@ class RomanTests {
         roman(8) shouldBe "VIII"
         roman(9) shouldBe "IX"
     }
+
+    @Test
+    fun `multiples of ten`() {
+        roman(10) shouldBe "X"
+        roman(20) shouldBe "XX"
+        roman(30) shouldBe "XXX"
+        roman(40) shouldBe "XL"
+        roman(50) shouldBe "L"
+        roman(60) shouldBe "LX"
+        roman(70) shouldBe "LXX"
+        roman(80) shouldBe "LXXX"
+        roman(90) shouldBe "XC"
+    }
 }
