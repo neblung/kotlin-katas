@@ -4,17 +4,23 @@ package kata.roman
  * Converts the given [nr] to its [roman representation](https://en.wikipedia.org/wiki/Roman_numerals)
  */
 fun roman(nr: Int): String {
-    var factor = nr / 100
-    var rest = nr % 100
-
-    val rC = convertHundred.toRoman(factor)
-    factor = rest / 10
-    rest = rest % 10
-    val rX = convertTen.toRoman(factor)
-    val rI = convertOne.toRoman(rest)
-    val chars = rC + rX + rI
-
+    val initial = Number(nr, listOf())
+    val solved = initial.convertWith(convertHundred, 100)
+        .convertWith(convertTen, 10)
+        .convertWith(convertOne, 1)
+    val chars = solved.chars
     return String(chars.toCharArray())
+}
+
+private class Number(
+    val decimal: Int,
+    val chars: List<Char>
+) {
+    fun convertWith(converter: DigitConverter, factor: Int): Number {
+        val digit = decimal / factor
+        val rest = decimal % factor
+        return Number(rest, chars + converter.toRoman(digit))
+    }
 }
 
 private val convertOne = DigitConverter('X', 'V', 'I')
