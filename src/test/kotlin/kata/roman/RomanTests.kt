@@ -42,4 +42,13 @@ class RomanTests {
         roman(500) shouldBe "D"
         roman(900) shouldBe "CM"
     }
+
+    @Test
+    fun `below thousand`() {
+        roman(100) shouldBe "C"
+        roman(500) shouldBe "D"
+        roman(900) shouldBe "CM"
+        roman(101) shouldBe "CI"
+        roman(120) shouldBe "CXX"
+    }
 }
