@@ -5,9 +5,9 @@ package kata.roman
  */
 fun roman(nr: Int): String {
     val initial = Number(nr, listOf())
-    val solved = initial.convertWith(convertHundred, 100)
-        .convertWith(convertTen, 10)
-        .convertWith(convertOne, 1)
+    val solved = initial.convertWith(convertHundred)
+        .convertWith(convertTen)
+        .convertWith(convertOne)
     val chars = solved.chars
     return String(chars.toCharArray())
 }
@@ -16,21 +16,22 @@ private class Number(
     val decimal: Int,
     val chars: List<Char>
 ) {
-    fun convertWith(converter: DigitConverter, factor: Int): Number {
-        val digit = decimal / factor
-        val rest = decimal % factor
+    fun convertWith(converter: DigitConverter): Number {
+        val digit = decimal / converter.factor
+        val rest = decimal % converter.factor
         return Number(rest, chars + converter.toRoman(digit))
     }
 }
 
-private val convertOne = DigitConverter('X', 'V', 'I')
-private val convertTen = DigitConverter('C', 'L', 'X')
-private val convertHundred = DigitConverter('M', 'D', 'C')
+private val convertOne = DigitConverter('X', 'V', 'I', 1)
+private val convertTen = DigitConverter('C', 'L', 'X', 10)
+private val convertHundred = DigitConverter('M', 'D', 'C', 100)
 
 private class DigitConverter(
     val x: Char,
     val v: Char,
     val i: Char,
+    val factor: Int
 ) {
     fun toRoman(digit: Int) = when (digit) {
         0 -> emptyList()
