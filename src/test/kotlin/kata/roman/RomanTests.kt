@@ -29,4 +29,10 @@ class RomanTests {
         roman(80) shouldBe "LXXX"
         roman(90) shouldBe "XC"
     }
+
+    @Test
+    fun `below 100 -- should append two converted decimal digits`() {
+        roman(11) shouldBe "XI"
+        roman(49) shouldBe "XLIX"
+    }
 }
