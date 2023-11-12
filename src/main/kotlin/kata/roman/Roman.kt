@@ -4,7 +4,7 @@ package kata.roman
  * Converts the given [nr] to its [roman representation](https://en.wikipedia.org/wiki/Roman_numerals)
  */
 fun roman(nr: Int): String {
-    val initial = Number(nr, listOf())
+    val initial = Number(nr % 1000, List(nr / 1000) { 'M' })
     val solved = digitConverters.fold(initial, Number::convertWith)
     return String(solved.chars.toCharArray())
 }
