@@ -4,7 +4,7 @@ package kata.numberToLcd
  * See https://codingdojo.org/kata/NumberToLCD/
  */
 object NumberToLcd {
-    fun convert(number: Int): List<String> {
+    fun convert(number: Int, width: Int, height: Int): List<String> {
         return number.toDigits()
             .map { sevenSegments[it] }
             .reduce(::blockJoin)

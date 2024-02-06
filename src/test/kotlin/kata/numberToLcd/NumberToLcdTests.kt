@@ -3,12 +3,14 @@ package kata.numberToLcd
 import io.kotest.matchers.shouldBe
 import kata.numberToLcd.NumberToLcd.blockJoin
 import kata.numberToLcd.NumberToLcd.toDigits
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class NumberToLcdTests {
     // method under test
-    private fun Int.toLcd() = NumberToLcd.convert(this).joinToString("\n")
+    private fun Int.toLcd(width: Int = 1, height: Int = 1) =
+        NumberToLcd.convert(this, width, height).joinToString("\n")
 
     @Test
     fun `single digits`() {
@@ -79,6 +81,18 @@ class NumberToLcdTests {
            >    _  _  _ 
            >  ||_||_ |_|
            >  | _||_||_|
+        """.trimMargin(">")
+    }
+
+    @Test
+    @Disabled("Part2 not yet implemented")
+    fun `width and height should be customizable`() {
+        1204.toLcd(width = 3, height = 2) shouldBe """
+           >      ___  ___      
+           >    |    ||   ||   |
+           >    | ___||   ||___|
+           >    ||    |   |    |
+           >    ||___ |___|    |
         """.trimMargin(">")
     }
 
