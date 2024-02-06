@@ -8,16 +8,7 @@ object NumberToLcd {
         return sevenSegments[number]
     }
 
-    internal fun Int.toDigits(): List<Int> {
-        val result = mutableListOf<Int>()
-        var rest = this
-        while (rest >= 10) {
-            result += rest % 10
-            rest /= 10
-        }
-        result.add(rest)
-        return result.reversed()
-    }
+    internal fun Int.toDigits(): List<Int> = toString().map { it - '0' }
 }
 
 private val sevenSegments = listOf(
