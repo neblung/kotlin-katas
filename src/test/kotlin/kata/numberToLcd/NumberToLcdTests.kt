@@ -1,6 +1,7 @@
 package kata.numberToLcd
 
 import io.kotest.matchers.shouldBe
+import kata.numberToLcd.NumberToLcd.blockJoin
 import kata.numberToLcd.NumberToLcd.toDigits
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
@@ -88,6 +89,23 @@ class NumberToLcdTests {
         @Test
         fun `to digits -- by example`() {
             1204.toDigits() shouldBe listOf(1, 2, 0, 4)
+        }
+
+        @Test
+        fun `joining -- by example`() {
+            val left = listOf(
+                "XXX",
+                "YYY",
+            )
+            val right = listOf(
+                "ABC",
+                "DEF",
+            )
+
+            blockJoin(left, right) shouldBe listOf(
+                "XXXABC",
+                "YYYDEF",
+            )
         }
     }
 }

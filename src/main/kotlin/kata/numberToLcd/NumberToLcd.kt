@@ -8,7 +8,12 @@ object NumberToLcd {
         return sevenSegments[number]
     }
 
+    // VisibleForTesting
     internal fun Int.toDigits(): List<Int> = toString().map { it - '0' }
+    // VisibleForTesting
+    internal fun blockJoin(left: List<String>, right: List<String>): List<String> {
+        return left.mapIndexed { index, prefix -> prefix + right[index] }
+    }
 }
 
 private val sevenSegments = listOf(
