@@ -5,11 +5,14 @@ package kata.numberToLcd
  */
 object NumberToLcd {
     fun convert(number: Int): List<String> {
-        return sevenSegments[number]
+        return number.toDigits()
+            .map { sevenSegments[it] }
+            .reduce(::blockJoin)
     }
 
     // VisibleForTesting
     internal fun Int.toDigits(): List<Int> = toString().map { it - '0' }
+
     // VisibleForTesting
     internal fun blockJoin(left: List<String>, right: List<String>): List<String> {
         return left.mapIndexed { index, prefix -> prefix + right[index] }
