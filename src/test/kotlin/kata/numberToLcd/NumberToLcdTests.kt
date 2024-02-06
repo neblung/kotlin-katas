@@ -3,7 +3,6 @@ package kata.numberToLcd
 import io.kotest.matchers.shouldBe
 import kata.numberToLcd.NumberToLcd.blockJoin
 import kata.numberToLcd.NumberToLcd.toDigits
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -85,7 +84,6 @@ class NumberToLcdTests {
     }
 
     @Test
-    @Disabled("Part2 not yet implemented")
     fun `width and height should be customizable`() {
         1204.toLcd(width = 3, height = 2) shouldBe """
            >      ___  ___      
