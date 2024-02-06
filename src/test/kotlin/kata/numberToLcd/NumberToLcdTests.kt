@@ -1,6 +1,7 @@
 package kata.numberToLcd
 
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class NumberToLcdTests {
@@ -68,5 +69,15 @@ class NumberToLcdTests {
             |_|
              _|
         """.trimIndent()
+    }
+
+    @Test
+    @Disabled("too complicated")
+    fun `numbers greater than 9 -- should be composed from their digits`() {
+        1968.toLcd() shouldBe """
+           >    _  _  _
+           >  ||_||_ |_|
+           >  | _||_||_|
+        """.trimMargin(">")
     }
 }
