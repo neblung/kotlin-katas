@@ -1,7 +1,9 @@
 package kata.numberToLcd
 
 import io.kotest.matchers.shouldBe
+import kata.numberToLcd.NumberToLcd.toDigits
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class NumberToLcdTests {
@@ -79,5 +81,13 @@ class NumberToLcdTests {
            >  ||_||_ |_|
            >  | _||_||_|
         """.trimMargin(">")
+    }
+
+    @Nested
+    inner class TestHelperFunctions {
+        @Test
+        fun `to digits -- by example`() {
+            1204.toDigits() shouldBe listOf(1, 2, 0, 4)
+        }
     }
 }
