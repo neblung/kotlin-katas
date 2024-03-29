@@ -7,4 +7,4 @@ fun fizzbuzz(number: Int): String = when {
     else -> number.toString()
 }
 
-fun Int.isRelatedTo(candidate: Int) = this % candidate == 0
+fun Int.isRelatedTo(candidate: Int) = (this % candidate == 0) or (candidate.digitToChar() in toString())

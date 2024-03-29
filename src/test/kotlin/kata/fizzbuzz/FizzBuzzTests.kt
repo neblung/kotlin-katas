@@ -1,7 +1,6 @@
 package kata.fizzbuzz
 
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class FizzBuzzTests {
@@ -31,7 +30,6 @@ class FizzBuzzTests {
     }
 
     @Test
-    @Disabled("needs refactoring first")
     fun `fizz buzz plus`() {
         fizzbuzz(13) shouldBe "Fizz"
         fizzbuzz(31) shouldBe "Fizz"
