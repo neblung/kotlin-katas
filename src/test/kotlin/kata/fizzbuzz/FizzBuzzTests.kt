@@ -16,4 +16,10 @@ class FizzBuzzTests {
         fizzbuzz(3) shouldBe "Fizz"
         fizzbuzz(6) shouldBe "Fizz"
     }
+
+    @Test
+    fun `dividable by five -- should be Buzz`() {
+        fizzbuzz(5) shouldBe "Buzz"
+        fizzbuzz(10) shouldBe "Buzz"
+    }
 }
