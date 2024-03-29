@@ -1,7 +1,7 @@
 package kata.fizzbuzz
 
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class FizzBuzzTests {
@@ -33,16 +33,20 @@ class FizzBuzzTests {
         }
     }
 
-    @Test
-    @Disabled("needs refactoring")
-    fun `fizz buzz plus`() {
-        fizzbuzz(13) shouldBe "Fizz"
-        fizzbuzz(31) shouldBe "Fizz"
+    @Nested
+    inner class FizzBuzzPlus {
+        @Test
+        fun `contains 3 -- should be fizz`() {
+            isFizz(13) shouldBe true
+            isFizz(31) shouldBe true
+        }
 
-        fizzbuzz(52) shouldBe "Buzz"
+        @Test
+        fun `contains 5 -- should be buzz`() {
+            isBuzz(35) shouldBe true
+            isBuzz(53) shouldBe true
+        }
 
-        fizzbuzz(35) shouldBe "FizzBuzz"
-        fizzbuzz(53) shouldBe "FizzBuzz"
     }
 
     @Test
