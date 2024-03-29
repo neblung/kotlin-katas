@@ -28,4 +28,15 @@ class FizzBuzzTests {
         fizzbuzz(15) shouldBe "FizzBuzz"
         fizzbuzz(75) shouldBe "FizzBuzz"
     }
+
+    @Test
+    fun `fizz buzz plus`() {
+        fizzbuzz(13) shouldBe "Fizz"
+        fizzbuzz(31) shouldBe "Fizz"
+
+        fizzbuzz(52) shouldBe "Buzz"
+
+        fizzbuzz(35) shouldBe "FizzBuzz"
+        fizzbuzz(53) shouldBe "FizzBuzz"
+    }
 }
