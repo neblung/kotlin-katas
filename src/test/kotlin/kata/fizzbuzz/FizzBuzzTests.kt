@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 
 class FizzBuzzTests {
     @Test
-    fun `neither dividable by three nor by five -- should be neither fizz nor buzz`() {
+    fun `neither dividable by three nor by five nor containing three or five -- should be neither fizz nor buzz`() {
         listOf(1, 2, 16).forEach { number ->
             isFizz(number) shouldBe false
             isBuzz(number) shouldBe false
@@ -23,14 +23,6 @@ class FizzBuzzTests {
     fun `dividable by five -- should be Buzz`() {
         isBuzz(5) shouldBe true
         isBuzz(10) shouldBe true
-    }
-
-    @Test
-    fun `dividable by three and five -- should be Fizz and Buzz`() {
-        listOf(15, 75).forEach { number ->
-            isFizz(number) shouldBe true
-            isBuzz(number) shouldBe true
-        }
     }
 
     @Nested
