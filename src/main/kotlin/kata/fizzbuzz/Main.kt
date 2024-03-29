@@ -5,6 +5,6 @@ package kata.fizzbuzz
  */
 fun main() {
     (1..100).forEach {
-        println(fizzbuzz(it + 1))
+        println(fizzbuzz(it))
     }
 }
