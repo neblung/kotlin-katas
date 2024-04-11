@@ -8,5 +8,6 @@ fun normalize(str: String): String {
 }
 
 fun String.isIsbn13(): Boolean {
-    return normalize(this).length == 13
+    val normalized = normalize(this)
+    return normalized.length == 13 && normalized.all { it.isDigit() }
 }

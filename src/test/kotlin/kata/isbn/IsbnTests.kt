@@ -25,5 +25,10 @@ class IsbnTests {
             "12345".isIsbn13() shouldBe false
             "12345678901234".isIsbn13() shouldBe false
         }
+
+        @Test
+        fun `contains non digit -- should not be isbn13`() {
+            "123456789X123".isIsbn13() shouldBe false
+        }
     }
 }
