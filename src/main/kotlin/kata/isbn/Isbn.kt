@@ -8,5 +8,5 @@ fun normalize(str: String): String {
 }
 
 fun String.isIsbn13(): Boolean {
-    return true
+    return normalize(this).length == 13
 }
