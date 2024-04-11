@@ -95,4 +95,11 @@ class IsbnTests {
             }
         }
     }
+
+    @Test
+    fun `isIsbn -- should return true iff is ISBN-10 or ISBN-13`() {
+        "97804 7005902-9".isIsbn() shouldBe true
+        "04-7-1958 697".isIsbn() shouldBe true
+        "nop".isIsbn() shouldBe false
+    }
 }
