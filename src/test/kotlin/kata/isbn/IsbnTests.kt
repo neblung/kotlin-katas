@@ -55,4 +55,44 @@ class IsbnTests {
             }
         }
     }
+
+    @Nested
+    inner class Isbn10 {
+        @Test
+        fun `positive sample -- should be isbn10`() {
+            "0471958697".isIsbn10() shouldBe true
+            "04-7-1958 697".isIsbn10() shouldBe true
+        }
+
+        @Test
+        fun `malformed strings -- should not be isbn10`() {
+            "123".isIsbn10() shouldBe false // too short
+            "12345678901".isIsbn10() shouldBe false // too long
+            "1X3456789X".isIsbn10() shouldBe false // bad char
+            "123456789Y".isIsbn10() shouldBe false // bad char
+        }
+
+        @Test
+        fun `should be isbn10 -- iff check digit correct`() {
+            val validSamples = listOf(
+                "0471958697",
+                "0 471 60695 2",
+                "0-470-84525-2",
+                "0-321-14653-0",
+                "0-9752298-0-X",    // which we found in the internet
+            )
+
+            // for known samples check that last digit is the only valid check-digit
+            validSamples.forEach { sample ->
+                val prefix = sample.dropLast(1)
+                val checkDigit = sample.last()
+
+                (('0'..'9') + 'X').forEach { c ->
+                    withClue(sample to c) {
+                        (prefix + c).isIsbn10() shouldBe (c == checkDigit)
+                    }
+                }
+            }
+        }
+    }
 }
