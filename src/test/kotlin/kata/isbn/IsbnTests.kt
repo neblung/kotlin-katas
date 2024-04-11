@@ -1,5 +1,6 @@
 package kata.isbn
 
+import io.kotest.assertions.withClue
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -29,6 +30,29 @@ class IsbnTests {
         @Test
         fun `contains non digit -- should not be isbn13`() {
             "123456789X123".isIsbn13() shouldBe false
+        }
+
+        @Test
+        fun `should be isbn13 -- iff check digit correct`() {
+            val validSamples = listOf(
+                "9780470059029",
+                "978 0 471 48648 0",
+                "978-0596809485",
+                "978-0-13-149505-0",
+                "978-0-262-13472-9",
+            )
+
+            // for known samples check that last digit is the only valid check-digit
+            validSamples.forEach { sample ->
+                val prefix = sample.dropLast(1)
+                val checkDigit = sample.last()
+
+                ('0'..'9').forEach { c ->
+                    withClue(sample to c) {
+                        (prefix + c).isIsbn13() shouldBe (c == checkDigit)
+                    }
+                }
+            }
         }
     }
 }
