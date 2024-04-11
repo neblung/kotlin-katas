@@ -6,3 +6,7 @@ package kata.isbn
 fun normalize(str: String): String {
     return str.replace(" ", "").replace("-", "")
 }
+
+fun String.isIsbn13(): Boolean {
+    return true
+}
