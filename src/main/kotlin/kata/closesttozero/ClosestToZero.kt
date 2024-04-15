@@ -9,6 +9,7 @@ fun List<Int>.closestToZero(): Int {
 internal fun closerToZero(a: Int, b: Int): Int {
     return when {
         abs(a) < abs(b) -> a
+        abs(a) == abs(b) && a > 0 -> a
         else -> b
     }
 }
