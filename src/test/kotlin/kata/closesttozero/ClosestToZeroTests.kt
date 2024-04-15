@@ -3,6 +3,7 @@ package kata.closesttozero
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ClosestToZeroTests {
     @Test
@@ -28,5 +29,15 @@ class ClosestToZeroTests {
             closerToZero(5, -5) shouldBe 5
             closerToZero(-5, 5) shouldBe 5
         }
+    }
+
+    @Test
+    fun `can check for empty list`() {
+        assertThrows<RuntimeException> {
+            emptyList<Int>().closestToZero()
+        }
+
+        emptyList<Int>().closestToZeroOrNull() shouldBe null
+        listOf(42).closestToZeroOrNull() shouldBe 42
     }
 }
