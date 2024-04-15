@@ -22,5 +22,11 @@ class ClosestToZeroTests {
             closerToZero(10, 5) shouldBe 5
             closerToZero(-10, 5) shouldBe 5
         }
+
+        @Test
+        fun `should be positive -- when tie`() {
+            closerToZero(5, -5) shouldBe 5
+            closerToZero(-5, 5) shouldBe 5
+        }
     }
 }
