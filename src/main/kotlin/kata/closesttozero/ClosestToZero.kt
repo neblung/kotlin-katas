@@ -1,5 +1,9 @@
 package kata.closesttozero
 
 fun List<Int>.closestToZero(): Int {
-    return reduce { a, b -> minOf(a, b) }
+    return reduce(::closerToZero)
+}
+
+internal fun closerToZero(a: Int, b: Int): Int {
+    return minOf(a, b)
 }
