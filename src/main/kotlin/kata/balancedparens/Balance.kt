@@ -6,7 +6,7 @@ object Balance {
         toCheck.forEachIndexed { index, c ->
             when (c) {
                 '(' -> pending += index to '('
-                ')' -> pending.removeLast()
+                ')' -> pending.removeLastOrNull() ?: return Unbalanced(index, "not open")
             }
         }
         if (pending.isNotEmpty()) {

@@ -14,6 +14,11 @@ class BalancedParenthesesTests {
     fun `not closing open bracket -- should be reported`() {
         Balance.check("(()") shouldBe Unbalanced(3, "'(' at 0 not closed")
     }
+
+    @Test
+    fun `closing bracket that's not open -- should be reported`() {
+        Balance.check("())") shouldBe Unbalanced(2, "not open")
+    }
 }
 
 private fun String.shouldBeBalanced() {
