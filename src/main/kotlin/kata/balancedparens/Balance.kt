@@ -1,12 +1,15 @@
 package kata.balancedparens
 
+private val brackets = mapOf('(' to ')', '{' to '}', '[' to ']')
+private val reverse = brackets.entries.associate { it.value to it.key }
+
 object Balance {
     fun check(toCheck: String): BalanceCheck {
         val pending = mutableListOf<IndexedChar>()
         toCheck.forEachIndexed { index, c ->
             when (c) {
-                '(' -> pending += index to '('
-                ')' -> pending.removeLastOrNull() ?: return Unbalanced(index, "not open")
+                in brackets.keys -> pending += index to c
+                in reverse.keys -> pending.removeLastOrNull() ?: return Unbalanced(index, "not open")
             }
         }
         if (pending.isNotEmpty()) {
