@@ -1,7 +1,6 @@
 package kata.balancedparens
 
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class BalancedParenthesesTests {
@@ -22,7 +21,6 @@ class BalancedParenthesesTests {
     }
 
     @Test
-    @Disabled("todo refactor")
     fun `closing the wrong bracket -- should be reported`() {
         Balance.check("(]") shouldBe Unbalanced(1, "not open")
     }

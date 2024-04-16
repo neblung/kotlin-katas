@@ -9,7 +9,10 @@ object Balance {
         toCheck.forEachIndexed { index, c ->
             when (c) {
                 in brackets.keys -> pending += index to c
-                in reverse.keys -> pending.removeLastOrNull() ?: return Unbalanced(index, "not open")
+                in reverse.keys -> {
+                    val (_, open) = pending.removeLastOrNull() ?: return Unbalanced(index, "not open")
+                    if (c != brackets[open]) return Unbalanced(index, "not open")
+                }
             }
         }
         if (pending.isNotEmpty()) {
