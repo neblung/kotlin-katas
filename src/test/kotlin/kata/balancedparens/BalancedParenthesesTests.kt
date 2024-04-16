@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test
 
 class BalancedParenthesesTests {
     @Test
-    fun `get started`() {
+    fun `closing all opened brackets -- should be balanced`() {
         "()".shouldBeBalanced()
+        "(())".shouldBeBalanced()
     }
 }
 
